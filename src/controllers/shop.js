@@ -138,7 +138,6 @@ module.exports ={
       shopModel.record()
         .then((result) => {
           res.json(result)
-          console.log(result)
         }) 
         .catch(err => console.log("result"));
     },

@@ -1,5 +1,6 @@
 const productModel = require('../models/product')
-const miscHelper = require('../helpers/helpers4');
+const miscHelper = require('../helpers/helpers3');
+const miscHelper1 = require('../helpers/helpers4');
 var jwt = require('jsonwebtoken');
 const fs=require('fs');
 const {promisify}=require("util")
@@ -20,7 +21,7 @@ module.exports ={
       console.log(nexpage)
       console.log(linkpre)
 
-        miscHelper.response(res, linknek,linkpre, result, 200 )       
+        miscHelper1.response(res, linknek,linkpre, result, 200 )       
         })
         .catch(err=> console.log(err));
     },

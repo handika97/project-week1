@@ -1,7 +1,8 @@
 const productModel = require('../models/product')
 const userModel = require('../models/user')
 const shopModel = require('../models/shop')
-const miscHelper = require('../helpers/helpers');
+//const miscHelper = require('../helpers/helpers');
+const miscHelper = require('../helpers/helpers4');
 var jwt = require('jsonwebtoken');
 module.exports ={
     getLogin:(req, res)=>{
@@ -30,9 +31,18 @@ module.exports ={
        
       },  
       loginAuth: (req,res)=>{
+        let page=0
+        let limit=4
+        let nexpage=Number(page)+1
+        let prepage=page-1
+        page=(page-1)*limit
+       
+        let linknek=`http://localhost:4002/api/v1/product/${nexpage}%%${limit}`
+        let linkpre="http://localhost:4002/api/v1/product/"+prepage+"%%"+limit;
         productModel.getProduct(0,4)
         .then((result)=>{
-            res.json(result)
+            
+        miscHelper.response(res, linknek,linkpre, result, 200 ) 
         })
         .catch(err=> console.log(err));
     },
